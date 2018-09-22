@@ -3,7 +3,7 @@
 
 std::array<std::atomic<size_t>, 10> histogram;
 
-void read_file(const char* filename, std::vector<int>& digits){
+void read_digits(const char* filename, std::vector<int>& digits){
   std::ifstream ifs(filename);
   char digit;
   while(ifs >> digit){
@@ -12,7 +12,7 @@ void read_file(const char* filename, std::vector<int>& digits){
 }
 
 void count_digits(const char* filename, std::vector<int>& digits, tf::SubflowBuilder& subflow){
-  read_file(filename, digits);
+  read_digits(filename, digits);
   if(digits.size() < 1000000u){
     for(const auto& d : digits){
       histogram[d] ++;
